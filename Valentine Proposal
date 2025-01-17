@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be My Valentine?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #ffebef;
+      color: #ff497a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .container {
+      padding: 20px;
+      max-width: 400px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      background: #fff;
+    }
+    button {
+      margin: 10px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #ff497a;
+      color: #fff;
+    }
+    button:hover {
+      background: #ff6d91;
+    }
+    .hidden {
+      display: none;
+    }
+    input[type="date"] {
+      margin: 20px 0;
+      padding: 10px;
+      border: 1px solid #ff497a;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="question">Will you be my Valentine? ❤️</h1>
+    <button id="yes-btn">Yes</button>
+    <button id="no-btn">No</button>
+    <div id="reservation" class="hidden">
+      <h2>Yay! 🎉 Which date should I book the reservation for?</h2>
+      <input type="date" id="date-picker">
+      <button onclick="submitDate()">Confirm</button>
+    </div>
+  </div>
+
+  <script>
+    let attempts = 0;
+
+    const questionElement = document.getElementById('question');
+    const yesButton = document.getElementById('yes-btn');
+    const noButton = document.getElementById('no-btn');
+    const reservationDiv = document.getElementById('reservation');
+
+    noButton.addEventListener('click', () => {
+      attempts++;
+      questionElement.textContent = `Will you please be my Valentine? ❤️ (Attempt ${attempts})`;
+    });
+
+    yesButton.addEventListener('click', () => {
+      yesButton.style.display = 'none';
+      noButton.style.display = 'none';
+      reservationDiv.classList.remove('hidden');
+    });
+
+    function submitDate() {
+      const selectedDate = document.getElementById('date-picker').value;
+      if (selectedDate) {
+        alert(`Reservation for Valentine's date booked on ${selectedDate}! 💕`);
+      } else {
+        alert('Please select a date for our Valentine’s celebration. 😊');
+      }
+    }
+  </script>
+</body>
+</html>
